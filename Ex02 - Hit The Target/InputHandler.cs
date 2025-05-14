@@ -1,12 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using GameLogic;
+using System;
 
-namespace Ex02_Hit_The_Target
+
+namespace UI
 {
-				internal class InoutHandler
+				public class InputHandler
 				{
+								public SecretCode GetSecretCodeInput()
+								{
+												Console.Write("Enter your guess (e.g. A B C D), or Q to quit: ");
+												string userInput = Console.ReadLine();
+												userInput = string.Join(" ", userInput.ToUpper().ToCharArray());
+
+												return new SecretCode(userInput);
+								}
 				}
 }
+
+

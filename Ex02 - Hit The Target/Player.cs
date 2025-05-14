@@ -15,23 +15,9 @@ namespace GameLogic
 				m_InputHandler = i_inputHandler;
 				}
 
-								public SecretCode GuessSecretCode() // Change From Void
+								public void GuessSecretCode() // Change From Void
 		{
-		
-
-		
-		/*
-			Console.Write("Enter your guess (e.g. A B C D), or Q to quit: ");
-			string userInput = Console.ReadLine();
-			
-			if (string.IsNullOrWhiteSpace(userInput))
-			{
-				return string.Empty;
-			}
-			userInput = string.Join(" ", userInput.ToUpper().ToCharArray());
-			return userInput;
-			*/
-			m_LastGuess = m_InputHandler.GetSecretCodeInput();
+										m_LastGuess = m_InputHandler.GetSecretCodeInput();
 		}
 
 		public SecretCode CurrentSecretCode

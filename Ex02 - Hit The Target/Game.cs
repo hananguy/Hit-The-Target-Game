@@ -12,6 +12,7 @@ namespace GameRun
 								private Board m_Board;
 								private InputValidator m_Validator;
 								private GameUI m_GameUI;
+								private InputHandler m_InputHandler;
 
 								private int m_MaxNumberOfGuesses;
 								private const int m_SecretCodeLength = 4;
@@ -29,9 +30,10 @@ namespace GameRun
 								{
 												bool playAgain = true;
 												m_GameUI = new GameUI();
-												m_Player = new Player(); // יצירה פעם אחת
-												m_Computer = new Computer(); // יצירה פעם אחת
-												m_Validator = new InputValidator(m_AllowedLetters, m_SecretCodeLength); // יצירה פעם אחת
+												m_InputHandler = new InputHandler();
+												m_Player = new Player(m_InputHandler); 
+												m_Computer = new Computer(); 
+												m_Validator = new InputValidator(m_AllowedLetters, m_SecretCodeLength); 
 
 												while (playAgain)
 												{
@@ -43,28 +45,24 @@ namespace GameRun
 																{
 																				Console.Clear();
 																				m_GameUI.DisplayBoard(m_Board);
-																				string playerGuess = m_Player.GuessSecretCode();
-
-																				if (playerGuess.ToUpper() == "Q")
+																				m_Player.GuessSecretCode();
+																				if (m_Player.CurrentSecretCode.Code.ToUpper() == "Q")
 																				{
 																								m_GameUI.DisplayQuitMessage(m_Computer);
 																								break;
 																				}
 
-																				ValidationResult validationResult = m_Validator.Validate(playerGuess);
+																				ValidationResult validationResult = m_Validator.Validate(m_Player.CurrentSecretCode);
 
 																				if (validationResult.m_IsValid == false)
 																				{
-																								Console.WriteLine(validationResult.ErrorMessage);
-																								Console.WriteLine("Press Enter to try again...");
-																								Console.ReadLine();
-																								Console.WriteLine("For Check");
+																								m_GameUI.DisplayErrorMessage(validationResult);
 																								guessIndex--;
 																								continue;
 																				}
 
-																				m_Player.SetSecretCode(validationResult.ParsedCode);
-
+																			//	m_Player.CurrentSecretCode = validationResult.ParsedCode;
+																				
 																				FeedBack feedback = new FeedBack();
 																				feedback.Evaluate(m_Player.CurrentSecretCode, m_Computer.SecretCode);
 																				m_Board.UpdateBoard(validationResult.ParsedCode, feedback);
@@ -78,13 +76,12 @@ namespace GameRun
 
 																if (playerWon)
 																{
-																				Console.WriteLine("You won!");
+																m_GameUI.DisplayPlayerWin();             
 																}
+
 																else
 																{
-																				Console.Clear();
-																				m_GameUI.DisplayBoard(m_Board);
-																				m_GameUI.DisplayLoseMessage(m_Computer);
+																				m_GameUI.DisplayPlayerLose(m_Board, m_Computer);
 																}
 																playAgain = m_GameUI.AskToPlayAgain();
 												}

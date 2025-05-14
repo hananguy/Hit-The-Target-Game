@@ -6,7 +6,7 @@ namespace UI
 
 				public class GameUI
 				{
-								public void showWelcomeMessage()
+								public void ShowWelcomeMessage()
 								{
 												Console.WriteLine("Welcome to Hit the Target!");
 								}
@@ -48,18 +48,35 @@ namespace UI
 												Console.WriteLine($"Available letters: {string.Join(" ", i_AllowedLetters)}");
 								}
 
+								public void DisplayErrorMessage(ValidationResult i_ValidationResult)
+								{
+												Console.WriteLine(i_ValidationResult.ErrorMessage);
+												Console.WriteLine("Press Enter to try again...");
+												Console.ReadLine();
+												Console.WriteLine("For Check");
+								}
 								public void DisplayQuitMessage(Computer i_Computer)
 								{
 									Console.WriteLine("You quit the game.");
 									Console.WriteLine($"The code was: {i_Computer.SecretCode.Code}");
 								}
 
+								public void DisplayPlayerLose(Board m_Board, Computer m_Computer)
+								{
+												Console.Clear();
+												DisplayBoard(m_Board);
+												DisplayLoseMessage(m_Computer);
+								}
 								public void DisplayLoseMessage(Computer i_Computer)
 								{
 												Console.WriteLine("Game ended. The code was:");
 												Console.WriteLine(i_Computer.SecretCode.Code);
 								}
 
+								public void DisplayPlayerWin()
+								{
+								Console.WriteLine("You won!");
+								}
 								public bool AskToPlayAgain()
 								{
 												string userInput;

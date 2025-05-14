@@ -13,13 +13,13 @@ namespace GameLogic
 			m_ExpectedLength = i_ExpectedLength;
 		}
 
-		public ValidationResult Validate(string i_UserGuess)
+		public ValidationResult Validate(SecretCode i_UserGuess)
 		{
 			bool isValid = true;
-			string parsedCode = null;
-			string guessWithoutSpaces = i_UserGuess.Replace(" ", "");
+			SecretCode parsedCode = new SecretCode();
+			string guessWithoutSpaces = i_UserGuess.Code.Replace(" ", "");
 			string errorMessage = string.Empty;
-
+			
 			if (guessWithoutSpaces.Length != m_ExpectedLength)
 			{
 				isValid = false;
@@ -63,7 +63,7 @@ namespace GameLogic
 
 				if (isValid)
 				{
-					parsedCode = guessWithoutSpaces;
+					parsedCode.Code = guessWithoutSpaces;
 				}
 			}
 

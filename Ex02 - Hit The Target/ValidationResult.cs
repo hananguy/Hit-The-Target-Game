@@ -6,11 +6,11 @@ namespace GameLogic
 				public class ValidationResult
 				{
 								public bool m_IsValid = false;
-								public string m_ParsedCode;
+								public SecretCode m_ParsedCode;
 								public string m_ErrorMessage;
 
 						
-								public ValidationResult(bool i_IsValid, string i_ParsedCode, string i_ErrorMessage)
+								public ValidationResult(bool i_IsValid, SecretCode i_ParsedCode, string i_ErrorMessage)
 								{
 												m_IsValid = i_IsValid;	
 												m_ParsedCode = i_ParsedCode;
@@ -23,7 +23,7 @@ namespace GameLogic
 												set { m_IsValid = value; }
 								}
 
-								public string ParsedCode
+								public SecretCode ParsedCode
 								{
 												get { return m_ParsedCode; }
 												set { m_ParsedCode = value; }
