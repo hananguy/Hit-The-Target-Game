@@ -75,6 +75,7 @@ namespace GameLogic
 
 		public bool IsWinningGuess()
 		{
+			
 			return NumberOfBulls == 4;
 		}
 	}

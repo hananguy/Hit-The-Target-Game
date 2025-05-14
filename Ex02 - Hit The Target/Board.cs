@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using GameLogic;
 using System.Linq;
 
-namespace GameUi
+namespace UI
 {
 	public class Board
 	{
