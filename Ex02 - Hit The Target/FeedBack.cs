@@ -5,53 +5,79 @@ using System.Data;
 
 namespace GameLogic
 {
-				public class FeedBack
+	public class FeedBack
+	{
+		public int NumberOfBulls
+		{
+			get;
+			private set;
+		}
+		public int NumberOfHits
+		{
+			get;
+			private set;
+		}
+
+		public void Evaluate(SecretCode i_ComputerCode, SecretCode i_PlayerCode)
+		{
+			char[] computerCodeChars = i_ComputerCode.Code.Replace(" ", "").ToCharArray();
+			char[] playerCodeChars = i_PlayerCode.Code.Replace(" ", "").ToCharArray();
+			bool[] computerCodeUsedFlags = new bool[computerCodeChars.Length];
+			bool[] playerGuessUsedFlags = new bool[playerCodeChars.Length];
+
+			for (int position = 0; position < playerGuessUsedFlags.Length; position++)
+			{
+				if (playerCodeChars[position] == computerCodeChars[position])
 				{
-								private int m_Bulls = 0;
-								private int m_Hits = 0;
-
-								public void Evaluate(SecretCode i_ComputerCode, SecretCode i_PlayerCode)
-								{
-												int i = 0;
-
-												foreach (char ch in i_PlayerCode.Code)
-												{
-																if (ch == i_ComputerCode.Code[i])
-																{
-																				m_Bulls++;
-																}
-																else
-																{
-																				foreach (char c in i_ComputerCode.Code)
-																				{
-																								if (ch == c)
-																								{
-																												m_Hits++;
-																												break;
-																								}
-																				}
-																}
-																i++;
-
-												}
-
-
-
-								}
-								public string CreateBullsHitsString()
-								{
-												List<char> symbolsString = new List<char>();
-												for(int i = 0; i < m_Bulls; i++)
-												{
-																symbolsString.Add('V');
-												}
-												for (int i = 0; i < m_Hits; i++)
-												{
-																symbolsString.Add('X');
-												}
-
-												return string.Join(" ", symbolsString);
-								}
+					NumberOfBulls++;
+					computerCodeUsedFlags[position] = true;
+					playerGuessUsedFlags[position] = true;
 				}
-				
+			}
+			for (int playerPosition = 0; playerPosition < playerCodeChars.Length; playerPosition++)
+			{
+				if (playerGuessUsedFlags[playerPosition])
+				{
+					continue; // already counted as a Bull
+				}
+
+				for (int computerPosition = 0; computerPosition < computerCodeChars.Length; computerPosition++)
+				{
+					if (computerCodeUsedFlags[computerPosition])
+					{
+						continue; // already used for a Bull
+					}
+
+					if (playerCodeChars[playerPosition] == computerCodeChars[computerPosition])
+					{
+						NumberOfHits++;
+						playerGuessUsedFlags[playerPosition] = true;
+						computerCodeUsedFlags[computerPosition] = true;
+						break;
+					}
+				}
+			}
+		}
+		public string CreateBullsHitsString()
+		{
+			List<char> symbolsString = new List<char>();
+			for (int i = 0; i < NumberOfBulls; i++)
+			{
+				symbolsString.Add('V');
+			}
+			for (int i = 0; i < NumberOfHits; i++)
+			{
+				symbolsString.Add('X');
+			}
+
+			return string.Join(" ", symbolsString);
+		}
+
+		public bool IsWinningGuess()
+		{
+			
+			return NumberOfBulls == 4;
+		}
+	}
+
 }

@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Linq;
 using GameLogic;
-using GameUi;
 using GameRun;
+using Ex02.ConsoleUtils;
+using UI;
 
 namespace GameMain
 {
@@ -10,22 +11,12 @@ namespace GameMain
 				{
 								static void Main()
 								{
-												/*
-												char[] availableLetters = new char[] {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H' };
-												Computer computer = new Computer();
-												computer.CreateSecretCode(availableLetters);
-												string code = computer.GetSecretCode().Code;
-												foreach (char ch in code)
-												{
-																Console.Write(ch);
-																Console.Write(" ");
-												*/
+												Console.WriteLine("Welcome to Hit the Target!");
+											//	GameUI gameUI = new GameUI();
+												//int numberOfGuesses = gameUI.getNumberOfGuessesFromUser();
 												Game game = new Game();
 												game.Run();
-												}
-
-
-
 								}
 				}
+}
 
