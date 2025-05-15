@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using GameLogic;
 using System.Linq;
 
-namespace GameUi
+namespace UI
 {
 	public class Board
 	{
@@ -44,12 +44,12 @@ namespace GameUi
 				Console.WriteLine(separator);
 			}
 		}
-		public void UpdateBoard(string i_Guess, FeedBack i_Feedback)
+		public void UpdateBoard(SecretCode i_Guess, FeedBack i_Feedback)
 		{
-			SecretCode code = new SecretCode();
-			code.Code = i_Guess;
+			//SecretCode code = new SecretCode();
+			//code.Code = i_Guess;
 
-			m_SecretCodes.Add(code);
+			m_SecretCodes.Add(i_Guess);
 			m_FeedBacks.Add(i_Feedback);
 		}
 	}
