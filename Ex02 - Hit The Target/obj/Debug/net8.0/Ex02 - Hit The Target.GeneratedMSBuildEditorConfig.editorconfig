@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Ex02_Hit_The_Target
-build_property.ProjectDir = C:\Users\Guy\source\repos\Hit-The-Target-Game\Ex02 - Hit The Target\
+build_property.ProjectDir = /Users/albealrod/Desktop/B.SC/3rd_year/c#/Hit-The-Target-Game/Ex02 - Hit The Target/
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
