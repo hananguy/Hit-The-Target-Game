@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using GameLogic;
 using System.Linq;
 
-namespace UI
+
+namespace GameLogic
 {
 	public class Board
 	{
-		List<SecretCode> m_SecretCodes;
-		List<FeedBack> m_FeedBacks;
+		private List<SecretCode> m_SecretCodes;
+		private List<FeedBack> m_FeedBacks;
 		private readonly int r_CodeLength;
 		private readonly int r_MaxGuesses;
 
@@ -19,7 +19,8 @@ namespace UI
 			m_SecretCodes = new List<SecretCode>();
 			m_FeedBacks = new List<FeedBack>();
 		}
-		public void Display()
+
+		public string GetBoardAsString()
 		{
 			int guessColWidth = 2 * r_CodeLength - 1;
 			int resultColWidth = r_CodeLength;
@@ -27,28 +28,30 @@ namespace UI
 			string header = $"| {"Pins:".PadRight(guessColWidth)} | {"Result:".PadRight(resultColWidth)} |";
 			string separator = $"|{new string('=', guessColWidth + 2)}|{new string('=', resultColWidth + 2)}|";
 
-			Console.WriteLine("Current board status:");
-			Console.WriteLine(header);
-			Console.WriteLine(separator);
+			string boardString = "";
+			boardString += "Current board status:\n";
+			boardString += header + "\n";
+			boardString += separator + "\n";
 
 			string hidden = string.Join(" ", Enumerable.Repeat("#", r_CodeLength));
-			Console.WriteLine($"| {hidden.PadRight(guessColWidth)} | {"".PadRight(resultColWidth)} |");
-			Console.WriteLine(separator);
+			boardString += $"| {hidden.PadRight(guessColWidth)} | {"".PadRight(resultColWidth)} |\n";
+			boardString += separator + "\n";
 
 			for (int line = 0; line < r_MaxGuesses; line++)
 			{
 				string guess = line < m_SecretCodes.Count ? m_SecretCodes[line].Code : "";
 				string result = line < m_FeedBacks.Count ? m_FeedBacks[line].CreateBullsHitsString().Replace(" ", "") : "";
 
-				Console.WriteLine($"| {guess.PadRight(guessColWidth)} | {result.PadRight(resultColWidth)} |");
-				Console.WriteLine(separator);
+				boardString += $"| {guess.PadRight(guessColWidth)} | {result.PadRight(resultColWidth)} |\n";
+				boardString += separator + "\n";
 			}
+
+			return boardString;
 		}
+
+
 		public void UpdateBoard(SecretCode i_Guess, FeedBack i_Feedback)
 		{
-			//SecretCode code = new SecretCode();
-			//code.Code = i_Guess;
-
 			m_SecretCodes.Add(i_Guess);
 			m_FeedBacks.Add(i_Feedback);
 		}

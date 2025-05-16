@@ -1,92 +1,95 @@
 ﻿using System;
 using GameLogic;
-using UI;
 
 namespace GameRun
 {
+	public class Game
+	{
+		private Computer m_Computer;
+		private Player m_Player;
+		private Board m_Board;
+		private InputValidator m_Validator;
+		private IUserInterface m_UI;
+		private int m_MaxNumberOfGuesses;
+		private const int m_SecretCodeLength = 4;
+		private const int k_MinGuesses = 4;
+		private const int k_MaxGuesses = 10;
+		private readonly char[] m_AllowedLetters = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H' };
 
-				public class Game
+		public Game(IUserInterface i_UI, Player i_Player, Computer i_Computer, InputValidator i_Validator, Board i_Board, int i_MaxGuesses)
+		{
+			m_UI = i_UI;
+			m_Player = i_Player;
+			m_Computer = i_Computer;
+			m_Validator = i_Validator;
+			m_Board = i_Board;
+			m_MaxNumberOfGuesses = i_MaxGuesses;
+		}
+
+		private void InitializeGame()
+		{
+			m_MaxNumberOfGuesses = m_UI.GetNumberOfGuesses(k_MinGuesses, k_MaxGuesses);
+			m_Board = new Board(m_SecretCodeLength, m_MaxNumberOfGuesses);
+			m_Computer.CreateSecretCode(m_AllowedLetters, m_SecretCodeLength);
+		}
+
+		public void Run()
+		{
+			bool playAgain = true;
+			m_UI = new ConsoleUI();
+			m_Player = new Player(m_UI);
+			m_Computer = new Computer();
+			m_Validator = new InputValidator(m_AllowedLetters, m_SecretCodeLength);
+
+			while (playAgain)
+			{
+				m_UI.ClearScreen();
+				InitializeGame();
+				bool playerWon = false;
+
+				for (int guessIndex = 0; guessIndex < m_MaxNumberOfGuesses; guessIndex++)
 				{
-								private Computer m_Computer;
-								private Player m_Player;
-								private Board m_Board;
-								private InputValidator m_Validator;
-								private GameUI m_GameUI;
-								private InputHandler m_InputHandler;
+					m_UI.ClearScreen();
+					m_UI.DisplayBoard(m_Board);
+					m_Player.GuessSecretCode();
 
-								private int m_MaxNumberOfGuesses;
-								private const int m_SecretCodeLength = 4;
-								private readonly char[] m_AllowedLetters = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H' };
+					if (m_Player.CurrentSecretCode.Code.ToUpper() == "Q")
+					{
+						m_UI.DisplayQuit(m_Computer.SecretCode.Code);
+						break;
+					}
 
+					ValidationResult validationResult = m_Validator.Validate(m_Player.CurrentSecretCode);
 
-								private void InitializeGame()
-								{
-												m_MaxNumberOfGuesses = m_GameUI.getNumberOfGuessesFromUser();
-												m_Board = new Board(m_SecretCodeLength, m_MaxNumberOfGuesses);
-												m_Computer.CreateSecretCode(m_AllowedLetters, m_SecretCodeLength);
-								}
+					if (!validationResult.m_IsValid)
+					{
+						m_UI.DisplayError(validationResult.ErrorMessage);
+						guessIndex--;
+						continue;
+					}
 
-								public void Run()
-								{
-												bool playAgain = true;
-												m_GameUI = new GameUI();
-												m_InputHandler = new InputHandler();
-												m_Player = new Player(m_InputHandler); 
-												m_Computer = new Computer(); 
-												m_Validator = new InputValidator(m_AllowedLetters, m_SecretCodeLength); 
+					FeedBack feedback = new FeedBack();
+					feedback.Evaluate(m_Player.CurrentSecretCode, m_Computer.SecretCode);
+					m_Board.UpdateBoard(validationResult.ParsedCode, feedback);
 
-												while (playAgain)
-												{
-																Console.Clear();
-																InitializeGame();
-																bool playerWon = false;
-
-																for (int guessIndex = 0; guessIndex < m_MaxNumberOfGuesses; guessIndex++)
-																{
-																				Console.Clear();
-																				m_GameUI.DisplayBoard(m_Board);
-																				m_Player.GuessSecretCode();
-																				if (m_Player.CurrentSecretCode.Code.ToUpper() == "Q")
-																				{
-																								m_GameUI.DisplayQuitMessage(m_Computer);
-																								break;
-																				}
-
-																				ValidationResult validationResult = m_Validator.Validate(m_Player.CurrentSecretCode);
-
-																				if (validationResult.m_IsValid == false)
-																				{
-																								m_GameUI.DisplayErrorMessage(validationResult);
-																								guessIndex--;
-																								continue;
-																				}
-
-																			//	m_Player.CurrentSecretCode = validationResult.ParsedCode;
-																				
-																				FeedBack feedback = new FeedBack();
-																				feedback.Evaluate(m_Player.CurrentSecretCode, m_Computer.SecretCode);
-																				m_Board.UpdateBoard(validationResult.ParsedCode, feedback);
-
-																				if (feedback.IsWinningGuess())
-																				{
-																								playerWon = true;
-																								break;
-																				}
-																}
-
-																if (playerWon)
-																{
-																m_GameUI.DisplayPlayerWin();             
-																}
-
-																else
-																{
-																				m_GameUI.DisplayPlayerLose(m_Board, m_Computer);
-																}
-																playAgain = m_GameUI.AskToPlayAgain();
-												}
-
-
-								}
+					if (feedback.IsWinningGuess())
+					{
+						playerWon = true;
+						break;
+					}
 				}
+
+				if (playerWon)
+				{
+					m_UI.DisplayWin();
+				}
+				else
+				{
+					m_UI.DisplayLose(m_Computer.SecretCode.Code, m_Board);
+				}
+
+				playAgain = m_UI.AskToPlayAgain();
+			}
+		}
+	}
 }

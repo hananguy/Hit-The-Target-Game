@@ -4,17 +4,17 @@ using System;
 
 namespace UI
 {
-				public class InputHandler
-				{
-								public SecretCode GetSecretCodeInput()
-								{
-												Console.Write("Enter your guess (e.g. A B C D), or Q to quit: ");
-												string userInput = Console.ReadLine();
-												userInput = string.Join(" ", userInput.ToUpper().ToCharArray());
+	public class InputHandler
+	{
+		public SecretCode GetSecretCodeInput()
+		{
+			Console.WriteLine(Messages.EnterGuessPrompt);
+			string userInput = Console.ReadLine();
+			userInput = string.Join(" ", userInput.ToUpper().ToCharArray());
 
-												return new SecretCode(userInput);
-								}
-				}
+			return new SecretCode(userInput);
+		}
+	}
 }
 
 

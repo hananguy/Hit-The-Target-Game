@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Linq;
+using UI;
+
 
 namespace GameLogic
 {
@@ -19,11 +21,11 @@ namespace GameLogic
 			SecretCode parsedCode = new SecretCode();
 			string guessWithoutSpaces = i_UserGuess.Code.Replace(" ", "");
 			string errorMessage = string.Empty;
-			
+
 			if (guessWithoutSpaces.Length != m_ExpectedLength)
 			{
 				isValid = false;
-				errorMessage = $"Input must be exactly {m_ExpectedLength} characters long.";
+				errorMessage = string.Format(Messages.Error_LengthMismatch, m_ExpectedLength);
 			}
 			else
 			{
@@ -34,14 +36,14 @@ namespace GameLogic
 					if (!char.IsUpper(c))
 					{
 						isValid = false;
-						errorMessage = $"Character '{c}' is not uppercase.";
+						errorMessage = string.Format(Messages.Error_NotUppercase, c);
 						break;
 					}
 
 					if (!m_AllowedLetters.Contains(c))
 					{
 						isValid = false;
-						errorMessage = $"Character '{c}' is not allowed.";
+						errorMessage = string.Format(Messages.Error_NotAllowedChar, c);
 						break;
 					}
 
@@ -50,7 +52,7 @@ namespace GameLogic
 						if (guessWithoutSpaces[j] == c)
 						{
 							isValid = false;
-							errorMessage = "Input contains duplicate characters.";
+							errorMessage = Messages.Error_Duplicates;
 							break;
 						}
 					}
