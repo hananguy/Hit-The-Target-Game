@@ -2,17 +2,17 @@ using GameLogic;
 
 public class Player
 {
-	private readonly IUserInterface m_UserInterface;
+	private readonly UserInterface m_ConsoleUI;
 	private SecretCode m_LastGuess;
 
-	public Player(IUserInterface i_UserInterface)
+	public Player(UserInterface i_UserInterface)
 	{
-		m_UserInterface = i_UserInterface;
+								m_ConsoleUI = i_UserInterface;
 	}
 
 	public void GuessSecretCode()
 	{
-		m_LastGuess = m_UserInterface.GetPlayerInput();
+		m_LastGuess = m_ConsoleUI.GetPlayerInput();
 	}
 
 	public void SetGuessFromUser(SecretCode i_Guess)

@@ -1,38 +1,19 @@
-/Users/albealrod/Desktop/B.SC/3rd_year/c#/Hit-The-Target-Game/Ex02 - Hit The Target/bin/Debug/net8.0/Ex02_Hit_The_Target
-/Users/albealrod/Desktop/B.SC/3rd_year/c#/Hit-The-Target-Game/Ex02 - Hit The Target/bin/Debug/net8.0/Ex02_Hit_The_Target.dll.config
-/Users/albealrod/Desktop/B.SC/3rd_year/c#/Hit-The-Target-Game/Ex02 - Hit The Target/bin/Debug/net8.0/Ex02_Hit_The_Target.deps.json
-/Users/albealrod/Desktop/B.SC/3rd_year/c#/Hit-The-Target-Game/Ex02 - Hit The Target/bin/Debug/net8.0/Ex02_Hit_The_Target.runtimeconfig.json
-/Users/albealrod/Desktop/B.SC/3rd_year/c#/Hit-The-Target-Game/Ex02 - Hit The Target/bin/Debug/net8.0/Ex02_Hit_The_Target.dll
-/Users/albealrod/Desktop/B.SC/3rd_year/c#/Hit-The-Target-Game/Ex02 - Hit The Target/bin/Debug/net8.0/Ex02_Hit_The_Target.pdb
-/Users/albealrod/Desktop/B.SC/3rd_year/c#/Hit-The-Target-Game/Ex02 - Hit The Target/bin/Debug/net8.0/Ex02.ConsoleUtils.dll
-/Users/albealrod/Desktop/B.SC/3rd_year/c#/Hit-The-Target-Game/Ex02 - Hit The Target/obj/Debug/net8.0/Ex02 - Hit The Target.csproj.AssemblyReference.cache
-/Users/albealrod/Desktop/B.SC/3rd_year/c#/Hit-The-Target-Game/Ex02 - Hit The Target/obj/Debug/net8.0/Ex02 - Hit The Target.GeneratedMSBuildEditorConfig.editorconfig
-/Users/albealrod/Desktop/B.SC/3rd_year/c#/Hit-The-Target-Game/Ex02 - Hit The Target/obj/Debug/net8.0/Ex02 - Hit The Target.AssemblyInfoInputs.cache
-/Users/albealrod/Desktop/B.SC/3rd_year/c#/Hit-The-Target-Game/Ex02 - Hit The Target/obj/Debug/net8.0/Ex02 - Hit The Target.AssemblyInfo.cs
-/Users/albealrod/Desktop/B.SC/3rd_year/c#/Hit-The-Target-Game/Ex02 - Hit The Target/obj/Debug/net8.0/Ex02 - Hit The Target.csproj.CoreCompileInputs.cache
-/Users/albealrod/Desktop/B.SC/3rd_year/c#/Hit-The-Target-Game/Ex02 - Hit The Target/obj/Debug/net8.0/Ex02 - Hit The Target.sourcelink.json
-/Users/albealrod/Desktop/B.SC/3rd_year/c#/Hit-The-Target-Game/Ex02 - Hit The Target/obj/Debug/net8.0/Ex02 - H.74476370.Up2Date
-/Users/albealrod/Desktop/B.SC/3rd_year/c#/Hit-The-Target-Game/Ex02 - Hit The Target/obj/Debug/net8.0/Ex02_Hit_The_Target.dll
-/Users/albealrod/Desktop/B.SC/3rd_year/c#/Hit-The-Target-Game/Ex02 - Hit The Target/obj/Debug/net8.0/refint/Ex02_Hit_The_Target.dll
-/Users/albealrod/Desktop/B.SC/3rd_year/c#/Hit-The-Target-Game/Ex02 - Hit The Target/obj/Debug/net8.0/Ex02_Hit_The_Target.pdb
-/Users/albealrod/Desktop/B.SC/3rd_year/c#/Hit-The-Target-Game/Ex02 - Hit The Target/obj/Debug/net8.0/Ex02 - Hit The Target.genruntimeconfig.cache
-/Users/albealrod/Desktop/B.SC/3rd_year/c#/Hit-The-Target-Game/Ex02 - Hit The Target/obj/Debug/net8.0/ref/Ex02_Hit_The_Target.dll
-C:\Users\Guy\Source\Repos\Hit-The-Target-Game\Ex02 - Hit The Target\bin\Debug\net8.0\Ex02_Hit_The_Target.exe
-C:\Users\Guy\Source\Repos\Hit-The-Target-Game\Ex02 - Hit The Target\bin\Debug\net8.0\Ex02_Hit_The_Target.dll.config
-C:\Users\Guy\Source\Repos\Hit-The-Target-Game\Ex02 - Hit The Target\bin\Debug\net8.0\Ex02_Hit_The_Target.deps.json
-C:\Users\Guy\Source\Repos\Hit-The-Target-Game\Ex02 - Hit The Target\bin\Debug\net8.0\Ex02_Hit_The_Target.runtimeconfig.json
-C:\Users\Guy\Source\Repos\Hit-The-Target-Game\Ex02 - Hit The Target\bin\Debug\net8.0\Ex02_Hit_The_Target.dll
-C:\Users\Guy\Source\Repos\Hit-The-Target-Game\Ex02 - Hit The Target\bin\Debug\net8.0\Ex02_Hit_The_Target.pdb
-C:\Users\Guy\Source\Repos\Hit-The-Target-Game\Ex02 - Hit The Target\bin\Debug\net8.0\Ex02.ConsoleUtils.dll
-C:\Users\Guy\Source\Repos\Hit-The-Target-Game\Ex02 - Hit The Target\obj\Debug\net8.0\Ex02 - Hit The Target.csproj.AssemblyReference.cache
-C:\Users\Guy\Source\Repos\Hit-The-Target-Game\Ex02 - Hit The Target\obj\Debug\net8.0\Ex02 - Hit The Target.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Guy\Source\Repos\Hit-The-Target-Game\Ex02 - Hit The Target\obj\Debug\net8.0\Ex02 - Hit The Target.AssemblyInfoInputs.cache
-C:\Users\Guy\Source\Repos\Hit-The-Target-Game\Ex02 - Hit The Target\obj\Debug\net8.0\Ex02 - Hit The Target.AssemblyInfo.cs
-C:\Users\Guy\Source\Repos\Hit-The-Target-Game\Ex02 - Hit The Target\obj\Debug\net8.0\Ex02 - Hit The Target.csproj.CoreCompileInputs.cache
-C:\Users\Guy\Source\Repos\Hit-The-Target-Game\Ex02 - Hit The Target\obj\Debug\net8.0\Ex02 - Hit The Target.sourcelink.json
-C:\Users\Guy\Source\Repos\Hit-The-Target-Game\Ex02 - Hit The Target\obj\Debug\net8.0\Ex02 - H.74476370.Up2Date
-C:\Users\Guy\Source\Repos\Hit-The-Target-Game\Ex02 - Hit The Target\obj\Debug\net8.0\Ex02_Hit_The_Target.dll
-C:\Users\Guy\Source\Repos\Hit-The-Target-Game\Ex02 - Hit The Target\obj\Debug\net8.0\refint\Ex02_Hit_The_Target.dll
-C:\Users\Guy\Source\Repos\Hit-The-Target-Game\Ex02 - Hit The Target\obj\Debug\net8.0\Ex02_Hit_The_Target.pdb
-C:\Users\Guy\Source\Repos\Hit-The-Target-Game\Ex02 - Hit The Target\obj\Debug\net8.0\Ex02 - Hit The Target.genruntimeconfig.cache
-C:\Users\Guy\Source\Repos\Hit-The-Target-Game\Ex02 - Hit The Target\obj\Debug\net8.0\ref\Ex02_Hit_The_Target.dll
+C:\Users\Guy\source\repos\Hit-The-Target-Game\Ex02 - Hit The Target\obj\Debug\net8.0\Ex02 - Hit The Target.csproj.AssemblyReference.cache
+C:\Users\Guy\source\repos\Hit-The-Target-Game\Ex02 - Hit The Target\obj\Debug\net8.0\Ex02 - Hit The Target.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Guy\source\repos\Hit-The-Target-Game\Ex02 - Hit The Target\obj\Debug\net8.0\Ex02 - Hit The Target.AssemblyInfoInputs.cache
+C:\Users\Guy\source\repos\Hit-The-Target-Game\Ex02 - Hit The Target\obj\Debug\net8.0\Ex02 - Hit The Target.AssemblyInfo.cs
+C:\Users\Guy\source\repos\Hit-The-Target-Game\Ex02 - Hit The Target\obj\Debug\net8.0\Ex02 - Hit The Target.csproj.CoreCompileInputs.cache
+C:\Users\Guy\source\repos\Hit-The-Target-Game\Ex02 - Hit The Target\obj\Debug\net8.0\Ex02 - Hit The Target.sourcelink.json
+C:\Users\Guy\source\repos\Hit-The-Target-Game\Ex02 - Hit The Target\obj\Debug\net8.0\Ex02_Hit_The_Target.dll
+C:\Users\Guy\source\repos\Hit-The-Target-Game\Ex02 - Hit The Target\obj\Debug\net8.0\refint\Ex02_Hit_The_Target.dll
+C:\Users\Guy\source\repos\Hit-The-Target-Game\Ex02 - Hit The Target\obj\Debug\net8.0\Ex02_Hit_The_Target.pdb
+C:\Users\Guy\source\repos\Hit-The-Target-Game\Ex02 - Hit The Target\bin\Debug\net8.0\Ex02_Hit_The_Target.exe
+C:\Users\Guy\source\repos\Hit-The-Target-Game\Ex02 - Hit The Target\bin\Debug\net8.0\Ex02_Hit_The_Target.dll.config
+C:\Users\Guy\source\repos\Hit-The-Target-Game\Ex02 - Hit The Target\bin\Debug\net8.0\Ex02_Hit_The_Target.deps.json
+C:\Users\Guy\source\repos\Hit-The-Target-Game\Ex02 - Hit The Target\bin\Debug\net8.0\Ex02_Hit_The_Target.runtimeconfig.json
+C:\Users\Guy\source\repos\Hit-The-Target-Game\Ex02 - Hit The Target\bin\Debug\net8.0\Ex02_Hit_The_Target.dll
+C:\Users\Guy\source\repos\Hit-The-Target-Game\Ex02 - Hit The Target\bin\Debug\net8.0\Ex02_Hit_The_Target.pdb
+C:\Users\Guy\source\repos\Hit-The-Target-Game\Ex02 - Hit The Target\bin\Debug\net8.0\Ex02.ConsoleUtils.dll
+C:\Users\Guy\source\repos\Hit-The-Target-Game\Ex02 - Hit The Target\obj\Debug\net8.0\Ex02 - H.74476370.Up2Date
+C:\Users\Guy\source\repos\Hit-The-Target-Game\Ex02 - Hit The Target\obj\Debug\net8.0\Ex02 - Hit The Target.genruntimeconfig.cache
+C:\Users\Guy\source\repos\Hit-The-Target-Game\Ex02 - Hit The Target\obj\Debug\net8.0\ref\Ex02_Hit_The_Target.dll

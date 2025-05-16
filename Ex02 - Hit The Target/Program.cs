@@ -11,7 +11,7 @@ namespace GameMain
 	{
 		static void Main()
 		{
-			ConsoleUI ui = new ConsoleUI();
+			UserInterface ui = new UserInterface();
 			ui.ShowWelcomeMessage();
 
 			const int k_SecretCodeLength = 4;

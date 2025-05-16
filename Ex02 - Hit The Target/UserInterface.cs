@@ -2,7 +2,7 @@ using System;
 using GameLogic;
 using UI;
 
-public class ConsoleUI : IUserInterface
+public class UserInterface
 {
     public void ShowWelcomeMessage()
     {

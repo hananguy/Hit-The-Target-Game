@@ -9,14 +9,14 @@ namespace GameRun
 		private Player m_Player;
 		private Board m_Board;
 		private InputValidator m_Validator;
-		private IUserInterface m_UI;
+		private UserInterface m_UI;
 		private int m_MaxNumberOfGuesses;
 		private const int m_SecretCodeLength = 4;
 		private const int k_MinGuesses = 4;
 		private const int k_MaxGuesses = 10;
 		private readonly char[] m_AllowedLetters = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H' };
 
-		public Game(IUserInterface i_UI, Player i_Player, Computer i_Computer, InputValidator i_Validator, Board i_Board, int i_MaxGuesses)
+		public Game(UserInterface i_UI, Player i_Player, Computer i_Computer, InputValidator i_Validator, Board i_Board, int i_MaxGuesses)
 		{
 			m_UI = i_UI;
 			m_Player = i_Player;
@@ -36,7 +36,7 @@ namespace GameRun
 		public void Run()
 		{
 			bool playAgain = true;
-			m_UI = new ConsoleUI();
+			m_UI = new UserInterface();
 			m_Player = new Player(m_UI);
 			m_Computer = new Computer();
 			m_Validator = new InputValidator(m_AllowedLetters, m_SecretCodeLength);
