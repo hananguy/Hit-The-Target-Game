@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace GameLogic
@@ -7,21 +6,22 @@ namespace GameLogic
 
 	public class Computer
 	{
+		private static readonly Random sr_Random = new Random();
 		private SecretCode m_Secret;
-		public void CreateSecretCode(char[] i_AvailableLetters, int i_SecretSize = 4)
+
+		public void CreateSecretCode(char[] i_AvailableCharacters, int i_SecretSize = 4)
 		{
-			char[] letters = new char[i_SecretSize];
-			Random random = new Random();
+			char[] secretChars = new char[i_SecretSize];
 			int index = 0;
 
 			while (index < i_SecretSize)
 			{
-				char randomChar = i_AvailableLetters[random.Next(i_AvailableLetters.Length)];
+				char randomChar = i_AvailableCharacters[sr_Random.Next(i_AvailableCharacters.Length)];
 
 				bool alreadyExists = false;
 				for (int i = 0; i < index; i++)
 				{
-					if (letters[i] == randomChar)
+					if (secretChars[i] == randomChar)
 					{
 						alreadyExists = true;
 						break;
@@ -30,18 +30,13 @@ namespace GameLogic
 
 				if (!alreadyExists)
 				{
-					letters[index] = randomChar;
+					secretChars[index] = randomChar;
 					index++;
 				}
 			}
 
 			m_Secret = new SecretCode();
-			m_Secret.Code = string.Join(" ", letters);
-		}
-
-		public SecretCode GetSecretCode()
-		{
-			return m_Secret;
+			m_Secret.Code = string.Join(" ", secretChars);
 		}
 
 		public SecretCode SecretCode

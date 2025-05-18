@@ -28,7 +28,6 @@ namespace GameRun
 
 		private void InitializeGame()
 		{
-			m_MaxNumberOfGuesses = m_UI.GetNumberOfGuesses(k_MinGuesses, k_MaxGuesses);
 			m_Board = new Board(m_SecretCodeLength, m_MaxNumberOfGuesses);
 			m_Computer.CreateSecretCode(m_AllowedLetters, m_SecretCodeLength);
 		}
@@ -36,14 +35,10 @@ namespace GameRun
 		public void Run()
 		{
 			bool playAgain = true;
-			m_UI = new UserInterface();
-			m_Player = new Player(m_UI);
-			m_Computer = new Computer();
-			m_Validator = new InputValidator(m_AllowedLetters, m_SecretCodeLength);
+			m_UI.ClearScreen();
 
 			while (playAgain)
 			{
-				m_UI.ClearScreen();
 				InitializeGame();
 				bool playerWon = false;
 
@@ -61,7 +56,7 @@ namespace GameRun
 
 					ValidationResult validationResult = m_Validator.Validate(m_Player.CurrentSecretCode);
 
-					if (!validationResult.m_IsValid)
+					if (!validationResult.IsValid)
 					{
 						m_UI.DisplayError(validationResult.ErrorMessage);
 						guessIndex--;
@@ -70,7 +65,8 @@ namespace GameRun
 
 					FeedBack feedback = new FeedBack();
 					feedback.Evaluate(m_Player.CurrentSecretCode, m_Computer.SecretCode);
-					m_Board.UpdateBoard(validationResult.ParsedCode, feedback);
+
+					m_Board.UpdateBoard(m_Player.CurrentSecretCode, feedback);
 
 					if (feedback.IsWinningGuess())
 					{

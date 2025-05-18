@@ -8,7 +8,7 @@ namespace UI
 	{
 		public SecretCode GetSecretCodeInput()
 		{
-			Console.WriteLine(Messages.EnterGuessPrompt);
+			Console.Write(Messages.EnterGuessPrompt);
 			string userInput = Console.ReadLine();
 			userInput = string.Join(" ", userInput.ToUpper().ToCharArray());
 

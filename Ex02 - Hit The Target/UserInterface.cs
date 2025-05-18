@@ -86,4 +86,4 @@ public class UserInterface
         userInput = string.Join(" ", userInput.ToUpper().ToCharArray());
         return new SecretCode(userInput);
     }
-}   
+}

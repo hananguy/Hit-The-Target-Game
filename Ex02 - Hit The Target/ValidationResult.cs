@@ -1,40 +1,37 @@
-﻿using System;
+using System;
 
-
-namespace GameLogic					
+namespace GameLogic
 {
-				public class ValidationResult
-				{
-								public bool m_IsValid = false;
-								public SecretCode m_ParsedCode;
-								public string m_ErrorMessage;
+    /// Represents the result of a validation process for a secret code.
+    public class ValidationResult
+    {
+        private bool _isValid;
+        private SecretCode _parsedCode;
+        private readonly string _errorMessage;
 
-						
-								public ValidationResult(bool i_IsValid, SecretCode i_ParsedCode, string i_ErrorMessage)
-								{
-												m_IsValid = i_IsValid;	
-												m_ParsedCode = i_ParsedCode;
-												m_ErrorMessage = i_ErrorMessage;
-								}
+        /// Gets or sets a value indicating whether the validation was successful.
+        public bool IsValid
+        {
+            get => _isValid;
+            set => _isValid = value;
+        }
 
-								public bool IsValid
-								{
-												get { return m_IsValid; }
-												set { m_IsValid = value; }
-								}
+        /// Gets or sets the parsed secret code.
+        public SecretCode ParsedCode
+        {
+            get => _parsedCode;
+            set => _parsedCode = value;
+        }
 
-								public SecretCode ParsedCode
-								{
-												get { return m_ParsedCode; }
-												set { m_ParsedCode = value; }
-								}
+        /// Gets the error message if the validation failed.
+        public string ErrorMessage => _errorMessage;
 
-								public string ErrorMessage
-								{
-												get { return m_ErrorMessage; }
-								}
-
-
-
-				}
+        /// Initializes a new instance of the <see cref="ValidationResult"/> class.
+        public ValidationResult(bool i_IsValid, SecretCode i_ParsedCode, string i_ErrorMessage)
+        {
+            _isValid = i_IsValid;
+            _parsedCode = i_ParsedCode;
+            _errorMessage = i_ErrorMessage;
+        }
+    }
 }

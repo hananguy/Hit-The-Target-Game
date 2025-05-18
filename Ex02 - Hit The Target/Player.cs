@@ -7,7 +7,7 @@ public class Player
 
 	public Player(UserInterface i_UserInterface)
 	{
-								m_ConsoleUI = i_UserInterface;
+		m_ConsoleUI = i_UserInterface;
 	}
 
 	public void GuessSecretCode()

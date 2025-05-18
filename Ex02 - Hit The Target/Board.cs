@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 
 namespace GameLogic
@@ -20,33 +21,38 @@ namespace GameLogic
 			m_FeedBacks = new List<FeedBack>();
 		}
 
+		public IReadOnlyList<SecretCode> SecretCodes => m_SecretCodes.AsReadOnly();
+		public IReadOnlyList<FeedBack> FeedBacks => m_FeedBacks.AsReadOnly();
+		public int CodeLength => r_CodeLength;
+		public int MaxGuesses => r_MaxGuesses;
+
 		public string GetBoardAsString()
 		{
-			int guessColWidth = 2 * r_CodeLength - 1;
-			int resultColWidth = r_CodeLength;
+			int guessColumnWidth = 2 * r_CodeLength - 1;
+			int resultColumnWidth = 2 * r_CodeLength - 1;
 
-			string header = $"| {"Pins:".PadRight(guessColWidth)} | {"Result:".PadRight(resultColWidth)} |";
-			string separator = $"|{new string('=', guessColWidth + 2)}|{new string('=', resultColWidth + 2)}|";
+			string header = $"| {"Pins:".PadRight(guessColumnWidth)} | {"Result:".PadRight(resultColumnWidth)} |";
+			string separator = $"|{new string('=', guessColumnWidth + 2)}|{new string('=', resultColumnWidth + 2)}|";
 
-			string boardString = "";
-			boardString += "Current board status:\n";
-			boardString += header + "\n";
-			boardString += separator + "\n";
+			StringBuilder boardString = new StringBuilder();
+			boardString.AppendLine("Current board status:");
+			boardString.AppendLine(header);
+			boardString.AppendLine(separator);
 
 			string hidden = string.Join(" ", Enumerable.Repeat("#", r_CodeLength));
-			boardString += $"| {hidden.PadRight(guessColWidth)} | {"".PadRight(resultColWidth)} |\n";
-			boardString += separator + "\n";
+			boardString.AppendLine($"| {hidden.PadRight(guessColumnWidth)} | {"".PadRight(resultColumnWidth)} |");
+			boardString.AppendLine(separator);
 
 			for (int line = 0; line < r_MaxGuesses; line++)
 			{
-				string guess = line < m_SecretCodes.Count ? m_SecretCodes[line].Code : "";
-				string result = line < m_FeedBacks.Count ? m_FeedBacks[line].CreateBullsHitsString().Replace(" ", "") : "";
+				string guess = line < m_SecretCodes.Count ? string.Join(" ", m_SecretCodes[line].Code.Replace(" ", "").ToCharArray()) : "";
+				string result = line < m_FeedBacks.Count ? string.Join(" ", m_FeedBacks[line].CreateBullsHitsString()) : "";
 
-				boardString += $"| {guess.PadRight(guessColWidth)} | {result.PadRight(resultColWidth)} |\n";
-				boardString += separator + "\n";
+				boardString.AppendLine($"| {guess.PadRight(guessColumnWidth)} | {result.PadRight(resultColumnWidth)} |");
+				boardString.AppendLine(separator);
 			}
 
-			return boardString;
+			return boardString.ToString();
 		}
 
 
