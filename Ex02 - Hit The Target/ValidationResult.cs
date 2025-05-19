@@ -5,33 +5,33 @@ namespace GameLogic
     /// Represents the result of a validation process for a secret code.
     public class ValidationResult
     {
-        private bool _isValid;
-        private SecretCode _parsedCode;
-        private readonly string _errorMessage;
+        private bool m_IsValid;
+        private SecretCode m_ParsedCode;
+        private readonly string m_ErrorMessage;
 
         /// Gets or sets a value indicating whether the validation was successful.
         public bool IsValid
         {
-            get => _isValid;
-            set => _isValid = value;
+            get => m_IsValid;
+            set => m_IsValid = value;
         }
 
         /// Gets or sets the parsed secret code.
         public SecretCode ParsedCode
         {
-            get => _parsedCode;
-            set => _parsedCode = value;
+            get => m_ParsedCode;
+            set => m_ParsedCode = value;
         }
 
         /// Gets the error message if the validation failed.
-        public string ErrorMessage => _errorMessage;
+        public string ErrorMessage => m_ErrorMessage;
 
         /// Initializes a new instance of the <see cref="ValidationResult"/> class.
-        public ValidationResult(bool i_IsValid, SecretCode i_ParsedCode, string i_ErrorMessage)
+        public ValidationResult(bool isValid, SecretCode parsedCode, string errorMessage)
         {
-            _isValid = i_IsValid;
-            _parsedCode = i_ParsedCode;
-            _errorMessage = i_ErrorMessage;
+            this.m_IsValid = isValid;
+            this.m_ParsedCode = parsedCode;
+            this.m_ErrorMessage = errorMessage;
         }
     }
 }

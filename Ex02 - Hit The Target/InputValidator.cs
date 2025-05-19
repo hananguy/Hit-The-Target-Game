@@ -7,12 +7,12 @@ namespace GameLogic
 {
 	public class InputValidator
 	{
-		char[] m_AllowedLetters;
-		int m_ExpectedLength;
-		public InputValidator(char[] i_AllowedLetters, int i_ExpectedLength) //Ctor
+		private readonly char[] r_AllowedLetters;
+		private readonly int r_ExpectedLength;
+		public InputValidator(char[] i_AllowedLetters, int i_ExpectedLength)
 		{
-			m_AllowedLetters = i_AllowedLetters;
-			m_ExpectedLength = i_ExpectedLength;
+			r_AllowedLetters = i_AllowedLetters;
+			r_ExpectedLength = i_ExpectedLength;
 		}
 
 		public ValidationResult Validate(SecretCode i_UserGuess)
@@ -22,10 +22,10 @@ namespace GameLogic
 			string guessWithoutSpaces = i_UserGuess.Code.Replace(" ", "");
 			string errorMessage = string.Empty;
 
-			if (guessWithoutSpaces.Length != m_ExpectedLength)
+			if (guessWithoutSpaces.Length != r_ExpectedLength)
 			{
 				isValid = false;
-				errorMessage = string.Format(Messages.Error_LengthMismatch, m_ExpectedLength);
+				errorMessage = string.Format(Messages.Error_LengthMismatch, r_ExpectedLength);
 			}
 			else
 			{
@@ -40,7 +40,7 @@ namespace GameLogic
 						break;
 					}
 
-					if (!m_AllowedLetters.Contains(c))
+					if (!r_AllowedLetters.Contains(c))
 					{
 						isValid = false;
 						errorMessage = string.Format(Messages.Error_NotAllowedChar, c);

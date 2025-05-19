@@ -28,6 +28,7 @@ public class UserInterface
     {
         Console.WriteLine(board.GetBoardAsString());
     }
+
     public void DisplayAllowedLetters(char[] allowedLetters)
     {
         Console.WriteLine(string.Format(Messages.AvailableLetters, string.Join(" ", allowedLetters)));

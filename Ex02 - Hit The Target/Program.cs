@@ -1,6 +1,4 @@
 using System;
-using System.Linq;
-
 using GameLogic;
 using GameRun;
 
@@ -8,7 +6,7 @@ namespace GameMain
 {
 	public class Program
 	{
-		static void Main()
+		public static void Main()
 		{
 			UserInterface ui = new UserInterface();
 			ui.ShowWelcomeMessage();
@@ -32,4 +30,3 @@ namespace GameMain
 		}
 	}
 }
-

@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace GameLogic
 {
-
 	public class Computer
 	{
 		private static readonly Random sr_Random = new Random();
@@ -35,8 +33,7 @@ namespace GameLogic
 				}
 			}
 
-			m_Secret = new SecretCode();
-			m_Secret.Code = string.Join(" ", secretChars);
+			m_Secret = new SecretCode(string.Join(" ", secretChars));
 		}
 
 		public SecretCode SecretCode

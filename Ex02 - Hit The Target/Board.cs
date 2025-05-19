@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
-
 namespace GameLogic
 {
 	public class Board
@@ -21,18 +19,33 @@ namespace GameLogic
 			m_FeedBacks = new List<FeedBack>();
 		}
 
-		public IReadOnlyList<SecretCode> SecretCodes => m_SecretCodes.AsReadOnly();
-		public IReadOnlyList<FeedBack> FeedBacks => m_FeedBacks.AsReadOnly();
-		public int CodeLength => r_CodeLength;
-		public int MaxGuesses => r_MaxGuesses;
+		public IReadOnlyList<SecretCode> SecretCodes
+		{
+			get { return m_SecretCodes.AsReadOnly(); }
+		}
+
+		public IReadOnlyList<FeedBack> FeedBacks
+		{
+			get { return m_FeedBacks.AsReadOnly(); }
+		}
+
+		public int CodeLength
+		{
+			get { return r_CodeLength; }
+		}
+
+		public int MaxGuesses
+		{
+			get { return r_MaxGuesses; }
+		}
 
 		public string GetBoardAsString()
 		{
-			int guessColumnWidth = 2 * r_CodeLength - 1;
-			int resultColumnWidth = 2 * r_CodeLength - 1;
+			int guessColWidth = 2 * r_CodeLength - 1;
+			int resultColWidth = 2 * r_CodeLength - 1;
 
-			string header = $"| {"Pins:".PadRight(guessColumnWidth)} | {"Result:".PadRight(resultColumnWidth)} |";
-			string separator = $"|{new string('=', guessColumnWidth + 2)}|{new string('=', resultColumnWidth + 2)}|";
+			string header = $"| {"Pins:".PadRight(guessColWidth)} | {"Result:".PadRight(resultColWidth)} |";
+			string separator = $"|{new string('=', guessColWidth + 2)}|{new string('=', resultColWidth + 2)}|";
 
 			StringBuilder boardString = new StringBuilder();
 			boardString.AppendLine("Current board status:");
@@ -40,7 +53,7 @@ namespace GameLogic
 			boardString.AppendLine(separator);
 
 			string hidden = string.Join(" ", Enumerable.Repeat("#", r_CodeLength));
-			boardString.AppendLine($"| {hidden.PadRight(guessColumnWidth)} | {"".PadRight(resultColumnWidth)} |");
+			boardString.AppendLine($"| {hidden.PadRight(guessColWidth)} | {"".PadRight(resultColWidth)} |");
 			boardString.AppendLine(separator);
 
 			for (int line = 0; line < r_MaxGuesses; line++)
@@ -48,14 +61,12 @@ namespace GameLogic
 				string guess = line < m_SecretCodes.Count ? string.Join(" ", m_SecretCodes[line].Code.Replace(" ", "").ToCharArray()) : "";
 				string result = line < m_FeedBacks.Count ? string.Join(" ", m_FeedBacks[line].CreateBullsHitsString()) : "";
 
-				boardString.AppendLine($"| {guess.PadRight(guessColumnWidth)} | {result.PadRight(resultColumnWidth)} |");
+				boardString.AppendLine($"| {guess.PadRight(guessColWidth)} | {result.PadRight(resultColWidth)} |");
 				boardString.AppendLine(separator);
 			}
 
 			return boardString.ToString();
 		}
-
-
 		public void UpdateBoard(SecretCode i_Guess, FeedBack i_Feedback)
 		{
 			m_SecretCodes.Add(i_Guess);

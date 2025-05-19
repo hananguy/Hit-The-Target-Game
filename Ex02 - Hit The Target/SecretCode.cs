@@ -5,21 +5,21 @@ namespace GameLogic
 	public struct SecretCode
 	{
 		private string m_Secret;
-		public SecretCode(string secret)
+
+		public SecretCode(string i_Secret)
 		{
-			m_Secret = secret;
+			m_Secret = i_Secret;
 		}
-		//Public Properties:
+
 		public string Code
 		{
 			get { return m_Secret; }
 			set { m_Secret = value; }
-
 		}
+
 		public override string ToString()
 		{
 			return m_Secret;
 		}
-
 	}
 }

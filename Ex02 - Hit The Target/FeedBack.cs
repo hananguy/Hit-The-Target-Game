@@ -5,13 +5,10 @@ namespace GameLogic
 {
     public class FeedBack
     {
-        /// Gets the number of correct letters in the correct positions.
         public int NumberOfBulls { get; private set; }
 
-        /// Gets the number of correct letters in incorrect positions.
         public int NumberOfHits { get; private set; }
 
-        /// Evaluates the player's guess against the computer's secret code.
         public void Evaluate(SecretCode i_PlayerCode, SecretCode i_ComputerCode)
         {
             Reset();
@@ -57,7 +54,6 @@ namespace GameLogic
             }
         }
 
-        /// Returns a string representation of the feedback using 'V' for bulls and 'X' for hits.
         public string CreateBullsHitsString()
         {
             List<char> feedbackSymbols = new List<char>();
@@ -73,13 +69,11 @@ namespace GameLogic
             return string.Join(" ", feedbackSymbols);
         }
 
-        /// Checks if the guess is a winning guess.
         public bool IsWinningGuess()
         {
             return NumberOfBulls == 4;
         }
 
-        /// Resets the feedback counters.
         private void Reset()
         {
             NumberOfBulls = 0;

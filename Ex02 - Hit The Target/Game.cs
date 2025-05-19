@@ -70,6 +70,8 @@ namespace GameRun
 
 					if (feedback.IsWinningGuess())
 					{
+						m_Board.UpdateBoard(m_Player.CurrentSecretCode, feedback);
+						m_UI.DisplayBoard(m_Board);
 						playerWon = true;
 						break;
 					}
