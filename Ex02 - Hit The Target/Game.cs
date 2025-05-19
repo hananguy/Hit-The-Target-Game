@@ -1,5 +1,6 @@
 ﻿using System;
 using GameLogic;
+using UI;
 
 namespace GameRun
 {
@@ -11,28 +12,29 @@ namespace GameRun
 		private InputValidator m_Validator;
 		private UserInterface m_UI;
 		private int m_MaxNumberOfGuesses;
-		private const int m_SecretCodeLength = 4;
+		private const int k_SecretCodeLength = 4;
 		private const int k_MinGuesses = 4;
 		private const int k_MaxGuesses = 10;
 		private readonly char[] m_AllowedLetters = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H' };
 
-		public Game(UserInterface i_UI, Player i_Player, Computer i_Computer, InputValidator i_Validator, Board i_Board, int i_MaxGuesses)
+		public Game(UserInterface i_UI)
 		{
 			m_UI = i_UI;
-			m_Player = i_Player;
-			m_Computer = i_Computer;
-			m_Validator = i_Validator;
-			m_Board = i_Board;
-			m_MaxNumberOfGuesses = i_MaxGuesses;
 		}
 
 		private void InitializeGame()
 		{
-			m_Board = new Board(m_SecretCodeLength, m_MaxNumberOfGuesses);
-			m_Computer.CreateSecretCode(m_AllowedLetters, m_SecretCodeLength);
-		}
+			m_MaxNumberOfGuesses = m_UI.GetNumberOfGuesses(k_MinGuesses, k_MaxGuesses);
+			m_Computer = new Computer();
+			m_Board = new Board(k_SecretCodeLength, m_MaxNumberOfGuesses);
+			m_Validator = new InputValidator(new char[] { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H' }, k_SecretCodeLength);
+			m_Player = new Player(m_UI);
 
-		public void Run()
+			m_Computer.CreateSecretCode(m_AllowedLetters, k_SecretCodeLength);
+
+			}
+
+								public void Run()
 		{
 			bool playAgain = true;
 			m_UI.ClearScreen();

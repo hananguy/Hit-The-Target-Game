@@ -1,33 +1,36 @@
-using GameLogic;
+using UI;
 
-public class Player
+namespace GameLogic
 {
-    private readonly UserInterface m_UserInterface;
-    private SecretCode m_LastGuess;
-
-    public Player(UserInterface i_UserInterface)
+    public class Player
     {
-        m_UserInterface = i_UserInterface;
-    }
+        private readonly UserInterface m_UserInterface;
+        private SecretCode m_LastGuess;
 
-    public void GuessSecretCode()
-    {
-        m_LastGuess = m_UserInterface.GetPlayerInput();
-    }
+        public Player(UserInterface i_UserInterface)
+        {
+            m_UserInterface = i_UserInterface;
+        }
 
-    public void SetGuess(SecretCode i_Guess)
-    {
-        m_LastGuess = i_Guess;
-    }
+        public void GuessSecretCode()
+        {
+            m_LastGuess = m_UserInterface.GetPlayerInput();
+        }
 
-    public SecretCode CurrentSecretCode
-    {
-        get { return m_LastGuess; }
-        set { m_LastGuess = value; }
-    }
+        public void SetGuess(SecretCode i_Guess)
+        {
+            m_LastGuess = i_Guess;
+        }
 
-    public void SetSecretCode(string code)
-    {
-        m_LastGuess = new SecretCode(code);
+        public SecretCode CurrentSecretCode
+        {
+            get { return m_LastGuess; }
+            set { m_LastGuess = value; }
+        }
+
+        public void SetSecretCode(string code)
+        {
+            m_LastGuess = new SecretCode(code);
+        }
     }
 }
